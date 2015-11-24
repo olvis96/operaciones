@@ -1,0 +1,277 @@
+// headhunters.cpp: define el punto de entrada de la aplicación de consola.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+
+using namespace std;
+string a[30]; // Vector de 30 postulantes
+int post=0;
+string b[30]; // Vector de 30 ofertas
+int ofertas=0;
+
+const string separador=" \n";
+
+
+void MenuPrincipalOP()
+{
+
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<"        |             HEADHUNTERS                 |"<<endl;
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<" "<<endl;
+ cout<<"         M E N U"<<endl;
+cout<<"         - - - -"<<endl;
+ cout<<" 1. Ingresar como persona individual:"<<endl;
+ cout<<" 2. Ingresar como empresa o sociedad"<<endl;
+ cout<<" 0. Finalizar "<<endl;
+}
+
+void menuOP1()
+{
+  
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<"        |           PERSONA INDIVIDUAL            |"<<endl;
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<" "<<endl;
+ cout<<"         M E N U"<<endl;
+ cout<<"         - - - -"<<endl;
+ cout<<" 1. Registrarse:"<<endl;
+ cout<<" 2. Ver Solicitudes"<<endl;
+ cout<<" 0. Finalizar "<<endl;
+
+
+}
+
+void menuOP2()
+{
+  
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<"        |                EMPRESAS                 |"<<endl;
+ cout<<"        |- - - - - - - - - - - - - - - - - - - - -|"<<endl;
+ cout<<" "<<endl;
+ cout<<"         M E N U"<<endl;
+ cout<<"         - - - -"<<endl;
+ cout<<" 1. Ver Toda la lista:"<<endl;
+ cout<<" 2. Registrar Solicitud"<<endl;
+ cout<<" 3. Buscar por Palabra"<<endl;
+ cout<<" 0. Finalizar "<<endl;
+}
+
+
+ string pedirdatos(string titulo, string mensaje){
+string d;
+	string s="";
+	cout<<mensaje<<endl;
+    cin>>d;
+	if (!d.empty()){
+	   s=s+titulo+": "+d;
+	   d="";
+	}
+	s=s+separador;
+	return s;
+}
+
+void submenu1_1(){
+	
+	//int op;
+	string s="";
+	s=s+pedirdatos("nombre"," Ingrese su nombre: ");
+	s=s+pedirdatos("Fecha natal"," Ingrese su fecha de nacimiento: ");
+	s=s+pedirdatos("CI"," Ingrese su CI: ");
+	s=s+pedirdatos("Profesion"," Ingrese su Profesion: ");
+	s=s+pedirdatos("Direccion"," Ingrese su Direccion: ");
+	s=s+pedirdatos("Telefono"," Ingrese su Telefono: ");
+	s=s+pedirdatos("Email"," Ingrese su Email: ");
+	s=s+pedirdatos("Nivel estudio"," Ingrese su Nivel de estudio (Primario, Secundario, Universitario, Superior): ");
+	s=s+pedirdatos("Experiencia"," Ingrese los anhos de experiencia: ");
+	s=s+pedirdatos("Interes"," Que busca en una empresa: ");
+	s=s+pedirdatos("Tiene Especialidad"," Tiene alguna especialidad (responder Si o No):  ");
+	s=s+pedirdatos("Especialidad"," Si respondio Si, escriba su especialidad: ");
+	s=s+pedirdatos("Cant. idiomas"," Cuantos idiomas habla: ");
+	s=s+pedirdatos("Idiomas"," Cuales son: ");
+	
+	cout<<"Usted registro los siguientes datos \n\n"<<endl;
+    cout<<s<<endl;
+    cout<<"\n"<<endl;
+	
+	a[post]=s;
+	post=post+1;
+    				
+}
+
+
+void submenu1(){
+	int op;
+
+	menuOP1();
+		string k="";
+	
+	cout<<"OPCION: "<<endl;
+    cin>>op;
+	while (op!=0)
+		{
+		switch (op)
+		{
+
+		case 1: submenu1_1(); 
+			system("pause");
+				system("cls");				
+        break;
+
+
+	    case 2: cout<<" Lista : \n"<<endl;
+                cout<<"\n"<<endl;
+				for(int i = 0; i < post; i = i + 1)
+				{	
+					cout<<b[i]<<endl;
+					cout<<"\n"<<endl;
+				}
+				system("pause");
+				system("cls");
+			break;
+
+		default:system("cls");
+				cout<<" ** Digite la opcion correcta! ** "<<endl;
+		}
+        menuOP1();
+		cout<<"OPCION: ";
+    
+		cin>> op;
+	}
+
+
+}
+
+
+void submenu2_2(){
+	
+	//int op;
+	string s="";
+	s=s+pedirdatos("Profesion"," Ingrese La Profesion: ");
+	s=s+pedirdatos("Nivel estudio"," Ingrese el Nivel de estudio (Primario, Secundario, Universitario, Superior): ");
+	s=s+pedirdatos("Experiencia"," Ingrese los anhos de experiencia: ");
+	s=s+pedirdatos("Especialidad"," escriba su especialidad: ");
+	s=s+pedirdatos("Idiomas"," Cuales son: ");
+	s=s+pedirdatos("Contacto"," Escriba un numero de contacto: ");
+	s=s+pedirdatos("Email"," Escriba una direccion de correo: ");
+	
+	cout<<"Usted registro los siguientes datos \n\n"<<endl;
+    cout<<s<<endl;
+    cout<<"\n"<<endl;
+	
+	b[ofertas]=s;
+	ofertas=ofertas+1;
+    /*cout<<"presione enter para continuar:";
+    cin>> op;
+	system("pause");*/
+	//system("cls");				
+}
+
+void submenu2(){
+	int op;
+
+	menuOP2();
+		string k="";
+	
+	cout<<"OPCION: ";
+    cin>>op;
+	while (op!=0)
+		{
+		switch (op)
+		{
+
+		case 1: cout<<" Lista : \n"<<endl;
+                cout<<"\n";
+				for(int i = 0; i < post; i = i + 1)
+				{	
+					cout<<a[i]<<endl;
+					cout<<"\n"<<endl;
+				}
+                system("pause");
+				system("cls");				
+        break;
+
+
+		case 2: submenu2_2();
+			system("pause");
+				system("cls");
+			break;
+
+		case 3: cout<<"introdusca una palabra a buscar: "<<endl;
+			    cin>>k;
+				cout<<" Lista : \n"<<endl;
+                cout<<"\n";
+				for(int i = 0; i < post; i = i + 1)
+				{	
+					if (a[i].find(k)!=-1){
+						cout<<a[i];
+						cout<<"\n";
+					}
+					
+				}
+                
+				
+				system("pause");
+				system("cls");
+
+		break;
+
+		default:system("cls");
+				cout<<" ** Digite la opcion correcta! ** "<<endl;
+		}
+        menuOP2();
+		cout<<"OPCION: "<<endl;
+    	cin>> op;
+	}
+
+
+}
+
+void menuprincipal(){
+
+	
+	int op;
+
+	MenuPrincipalOP();
+
+	cout<<"OPCION: ";
+    cin>>op;
+	while (op!=0)
+		{
+		switch (op)
+		{
+
+		case 1: submenu1();
+				system("pause");
+				system("cls");
+		break;
+
+		case 2: submenu2();
+				system("pause");
+				system("cls");
+		break;
+		default:system("cls");
+				cout<<" ** Digite la opcion correcta! ** ";
+        }
+        MenuPrincipalOP();
+		cout<<"OPCION:";
+		cin>> op;
+	}
+
+
+}
+
+int main(void)
+{ system("color 03");
+   menuprincipal();
+  //  submenu();
+	
+
+
+   return 0;
+	
+}
+
